@@ -12,10 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by JayPhone on 2020/3/11
- * 创建Handler时,默认和当前线程的Looper进行关联，如果当前线程为子线程，则需要调用Looper.prepare(),否则会报错
- * Looper为一个ThreadLocal对象，是线程内部的变量，所以保证每个线程都有一个Looper
- * 调用Looper.prepare()时会在内部创建一个MessageQueue,Handler发送的消息会发送到其中
- * Looper.loop()方法为一个死循环，会不断从消息队列中获取消息并分发到指定Handler去处理
+ * <p>
+ * 创建Handler时,默认和当前线程的Looper进行关联，主线程中在初始化时已完成Looper的创建，如果当前线程为子线程，则需要调用Looper.prepare(),否则会报错
+ * Looper是一个被放置在ThreadLocal里的对象，是线程内部的变量，所以保证每个线程都有一个Looper
+ * 调用Looper.prepare()时会把Looper放置到ThreadLocal里面，Looper的构造函数中会创建一个MessageQueue,Handler发送的消息会入队到MessageQueue中
+ * Looper.loop()方法为一个死循环，会不断从MessageQueue中获取消息并调用Handler的dispatchMessage(Message)方法把消息进行分发处理
+ * 如果Handler是使用Post(Runnable)的方式发送消息，则在处理消息dispatchMessage(Message)时直接调用Runnable.run()
+ * 如果Handler在创建时设置了监听器Handler.Callback,则将会最先回调改接口的方法handleMessage(Message)去处理消息，如果该方法返回true，表示事件已消耗，
+ * 则不会继续调用Handler中的handleMessage(Message)方法去处理，如果返回false，则继续调用Handler中的handleMessage(Message)方法去处理；
+ * 否则则调用Handler中的handleMessage(Message)方法去处理
  */
 public class HandlerActivity extends AppCompatActivity {
     private static final String TAG = "HandlerActivity";
