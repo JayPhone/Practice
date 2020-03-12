@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Created by JayPhone on 2020/3/11
  * <p>
  * 创建Handler时,默认和当前线程的Looper进行关联，主线程中在初始化时已完成Looper的创建，如果当前线程为子线程，则需要调用Looper.prepare(),否则会报错
+ * Handler的创建可以指定Looper(发送的线程)，Handler.Callback(消息处理回调)
  * Looper是一个被放置在ThreadLocal里的对象，是线程内部的变量，所以保证每个线程都有一个Looper
  * 调用Looper.prepare()时会把Looper放置到ThreadLocal里面，Looper的构造函数中会创建一个MessageQueue,Handler发送的消息会入队到MessageQueue中
  * Looper.loop()方法为一个死循环，会不断从MessageQueue中获取消息并调用Handler的dispatchMessage(Message)方法把消息进行分发处理
@@ -87,7 +88,8 @@ public class HandlerActivity extends AppCompatActivity {
     }
 
     /**
-     * 主线程创建的Handler
+     * Handler容易引发内存泄漏，由于内部类默认是持有外部类(Activity)的引用的，如果发送的消息在消息队列中未被全部处理完成，而此时关闭activity的话，由于Handler持有
+     * 外部类的引用，而Handler又被Message所持有，而Message又在MessageQueue中，则会导致activity无法被正常回收，从而导致内存泄漏
      * 1.使用静态内部类来避免持有外部类的引用
      * 2.使用弱引用来持有activity的引用
      */
