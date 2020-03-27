@@ -51,7 +51,14 @@
             <!--                <category android:name="android.intent.category.LAUNCHER" />-->
             <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".java.GenericActivity">
+        <activity android:name=".java.generic.GenericActivity">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".java.pattern.PatternActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

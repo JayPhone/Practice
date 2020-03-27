@@ -1,4 +1,4 @@
-package com.jayphone.practice.java;
+package com.jayphone.practice.java.generic;
 
 import android.os.Bundle;
 import android.util.Log;
