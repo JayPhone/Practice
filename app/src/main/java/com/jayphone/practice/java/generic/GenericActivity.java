@@ -246,6 +246,7 @@ public class GenericActivity extends AppCompatActivity {
         List<? super Season> s = s1;
         s.add(new Spring());
         s.add(new Summer());
+//        Object o = s.get(0);
         //这里的Season是一个Spring的超类（父类,superclass）的List。同样地，出于对类型安全的考虑，我们可以加入Spring对象或者其任何子类（如HotSpring）对象，
         //但由于编译器并不知道List的内容究竟是Season的哪个超类，因此不允许加入特定的任何超类型。而当我们读取的时候，
         //编译器在不知道是什么类型的情况下只能返回Object对象，因为Object是任何Java类的最终祖先类。
