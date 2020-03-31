@@ -6,6 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jayphone.practice.java.pattern.builder.Car;
+import com.jayphone.practice.java.pattern.command.BakeChickenWingOrder;
+import com.jayphone.practice.java.pattern.command.BakeMuttonOrder;
+import com.jayphone.practice.java.pattern.command.Barbecuer;
+import com.jayphone.practice.java.pattern.command.Order;
+import com.jayphone.practice.java.pattern.command.Waiter;
 import com.jayphone.practice.java.pattern.composite.Folder;
 import com.jayphone.practice.java.pattern.composite.ImageFile;
 import com.jayphone.practice.java.pattern.composite.TextFile;
@@ -146,5 +151,18 @@ public class PatternActivity extends AppCompatActivity {
         System.out.println("价格为：" + cashContext.getResult(10));
         cashContext.setCash(cashReturn);
         System.out.println("价格为：" + cashContext.getResult(10));
+
+        //命令模式
+        Barbecuer barbecuer = new Barbecuer();
+        Order muttonOrder = new BakeMuttonOrder(barbecuer);
+        Order chickenWingOrder = new BakeChickenWingOrder(barbecuer);
+        Waiter waiter = new Waiter(2, 2);
+        waiter.setOrder(muttonOrder);
+        waiter.setOrder(muttonOrder);
+        waiter.setOrder(muttonOrder);
+        waiter.setOrder(chickenWingOrder);
+        waiter.setOrder(chickenWingOrder);
+        waiter.setOrder(chickenWingOrder);
+        waiter.doOrder();
     }
 }
