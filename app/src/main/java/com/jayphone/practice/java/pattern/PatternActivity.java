@@ -29,6 +29,11 @@ import com.jayphone.practice.java.pattern.proxy.statis.Agent;
 import com.jayphone.practice.java.pattern.proxy.statis.Boxer;
 import com.jayphone.practice.java.pattern.proxy.statis.StrongBoxer;
 import com.jayphone.practice.java.pattern.singleton.Singleton;
+import com.jayphone.practice.java.pattern.strategy.Cash;
+import com.jayphone.practice.java.pattern.strategy.CashContext;
+import com.jayphone.practice.java.pattern.strategy.CashNormal;
+import com.jayphone.practice.java.pattern.strategy.CashRebate;
+import com.jayphone.practice.java.pattern.strategy.CashReturn;
 import com.jayphone.practice.java.pattern.template.Examiner;
 
 import java.lang.reflect.Proxy;
@@ -130,5 +135,16 @@ public class PatternActivity extends AppCompatActivity {
         subject.addObserver(new ConcreteObserver());
         subject.addObserver(new ConcreteObserver());
         subject.doSomething();
+
+        //策略模式
+        Cash cashNormal = new CashNormal();
+        Cash cashRebate = new CashRebate(0.5);
+        Cash cashReturn = new CashReturn(2, 3);
+        CashContext cashContext = new CashContext(cashNormal);
+        System.out.println("价格为：" + cashContext.getResult(10));
+        cashContext.setCash(cashRebate);
+        System.out.println("价格为：" + cashContext.getResult(10));
+        cashContext.setCash(cashReturn);
+        System.out.println("价格为：" + cashContext.getResult(10));
     }
 }
