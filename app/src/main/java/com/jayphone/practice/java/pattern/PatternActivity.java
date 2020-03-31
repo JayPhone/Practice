@@ -28,12 +28,18 @@ import com.jayphone.practice.java.pattern.flyweight.Piece;
 import com.jayphone.practice.java.pattern.flyweight.PieceFactory;
 import com.jayphone.practice.java.pattern.observer.ConcreteObserver;
 import com.jayphone.practice.java.pattern.observer.ConcreteSubject;
-import com.jayphone.practice.java.pattern.observer.Subject;
 import com.jayphone.practice.java.pattern.proxy.dynamic.AgentHandler;
 import com.jayphone.practice.java.pattern.proxy.statis.Agent;
 import com.jayphone.practice.java.pattern.proxy.statis.Boxer;
 import com.jayphone.practice.java.pattern.proxy.statis.StrongBoxer;
+import com.jayphone.practice.java.pattern.responsibility.BigManager;
+import com.jayphone.practice.java.pattern.responsibility.Bill;
+import com.jayphone.practice.java.pattern.responsibility.GroupLeader;
+import com.jayphone.practice.java.pattern.responsibility.Handler;
+import com.jayphone.practice.java.pattern.responsibility.LunchBill;
+import com.jayphone.practice.java.pattern.responsibility.Manager;
 import com.jayphone.practice.java.pattern.singleton.Singleton;
+import com.jayphone.practice.java.pattern.state.Context;
 import com.jayphone.practice.java.pattern.strategy.Cash;
 import com.jayphone.practice.java.pattern.strategy.CashContext;
 import com.jayphone.practice.java.pattern.strategy.CashNormal;
@@ -42,6 +48,8 @@ import com.jayphone.practice.java.pattern.strategy.CashReturn;
 import com.jayphone.practice.java.pattern.template.Examiner;
 
 import java.lang.reflect.Proxy;
+
+import static com.jayphone.practice.java.pattern.state.Context.STOPPING_STATE;
 
 /*
  * Created by JayPhone on 2020/3/28
@@ -164,5 +172,28 @@ public class PatternActivity extends AppCompatActivity {
         waiter.setOrder(chickenWingOrder);
         waiter.setOrder(chickenWingOrder);
         waiter.doOrder();
+
+        //状态模式
+        Context context = new Context();
+        //定义初始状态为关门（共四种初始值）
+        context.setLiftState(STOPPING_STATE);
+        context.open();
+        context.close();
+        context.run();
+        context.stop();
+
+        //责任链模式
+        Handler groupLeader = new GroupLeader();
+        Handler manager = new Manager();
+        Handler bigManager = new BigManager();
+        groupLeader.setNextHandler(manager);
+        manager.setNextHandler(bigManager);
+
+        Bill bill1 = new LunchBill("1111", "Jayphone", 1200);
+        Bill bill2 = new LunchBill("2222", "Jayphone", 500);
+        Bill bill3 = new LunchBill("3333", "Jayphone", 1520);
+        groupLeader.handle(bill1);
+        groupLeader.handle(bill2);
+        groupLeader.handle(bill3);
     }
 }
