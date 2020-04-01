@@ -26,6 +26,11 @@ import com.jayphone.practice.java.pattern.factory.method.Factory;
 import com.jayphone.practice.java.pattern.factory.simple.CarFactory;
 import com.jayphone.practice.java.pattern.flyweight.Piece;
 import com.jayphone.practice.java.pattern.flyweight.PieceFactory;
+import com.jayphone.practice.java.pattern.mediator.China;
+import com.jayphone.practice.java.pattern.mediator.Country;
+import com.jayphone.practice.java.pattern.mediator.USA;
+import com.jayphone.practice.java.pattern.mediator.UnitedNations;
+import com.jayphone.practice.java.pattern.mediator.UnitedNationsSecurityCouncil;
 import com.jayphone.practice.java.pattern.observer.ConcreteObserver;
 import com.jayphone.practice.java.pattern.observer.ConcreteSubject;
 import com.jayphone.practice.java.pattern.proxy.dynamic.AgentHandler;
@@ -46,6 +51,11 @@ import com.jayphone.practice.java.pattern.strategy.CashNormal;
 import com.jayphone.practice.java.pattern.strategy.CashRebate;
 import com.jayphone.practice.java.pattern.strategy.CashReturn;
 import com.jayphone.practice.java.pattern.template.Examiner;
+import com.jayphone.practice.java.pattern.visitor.Failing;
+import com.jayphone.practice.java.pattern.visitor.Man;
+import com.jayphone.practice.java.pattern.visitor.ObjectStructure;
+import com.jayphone.practice.java.pattern.visitor.Success;
+import com.jayphone.practice.java.pattern.visitor.Woman;
 
 import java.lang.reflect.Proxy;
 
@@ -195,5 +205,24 @@ public class PatternActivity extends AppCompatActivity {
         groupLeader.handle(bill1);
         groupLeader.handle(bill2);
         groupLeader.handle(bill3);
+
+        //中介者模式
+        UnitedNationsSecurityCouncil unitedNationsSecurityCouncil = new UnitedNationsSecurityCouncil();
+
+        Country china = new China(unitedNationsSecurityCouncil);
+        Country USA = new USA(unitedNationsSecurityCouncil);
+        unitedNationsSecurityCouncil.setChina(china);
+        unitedNationsSecurityCouncil.setUSA(USA);
+
+        china.sendMessage("美国是垃圾");
+        USA.sendMessage("中国是爸爸");
+
+        //访问者模式
+        ObjectStructure objectStructure = new ObjectStructure();
+        objectStructure.add(new Man());
+        objectStructure.add(new Woman());
+
+        objectStructure.display(new Success());
+        objectStructure.display(new Failing());
     }
 }
