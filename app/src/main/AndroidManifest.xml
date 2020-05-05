@@ -60,6 +60,20 @@
         </activity>
         <activity android:name=".libs.RxjavaActivity" />
         <activity android:name=".java.pattern.PatternActivity">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".java.collection.CollectionActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".java.reflection.ReflectionActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
