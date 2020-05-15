@@ -67,13 +67,20 @@
             <!--            </intent-filter>-->
         </activity>
         <activity android:name=".java.collection.CollectionActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".java.reflection.ReflectionActivity" >
+        <activity android:name=".java.reflection.ReflectionActivity">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".java.annotation.AnnotationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

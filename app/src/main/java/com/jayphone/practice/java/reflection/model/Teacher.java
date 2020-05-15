@@ -28,11 +28,11 @@ public class Teacher extends Person implements School, Serializable {
         mStudentList = studentList;
     }
 
-    public String getMajor() {
+    protected String getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
+    private void setMajor(String major) {
         this.major = major;
     }
 
@@ -71,5 +71,9 @@ public class Teacher extends Person implements School, Serializable {
 
     private interface Teach {
 
+    }
+
+    public static int staticMethod(int num) {
+        return num;
     }
 }
