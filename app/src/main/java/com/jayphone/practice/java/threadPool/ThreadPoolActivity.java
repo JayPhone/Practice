@@ -25,7 +25,8 @@ public class ThreadPoolActivity extends AppCompatActivity {
 //        singleThreadExecutor();
 //        fixedThreadPool();
 //        cachedThreadPool();
-        scheduledThreadPool();
+//        scheduledThreadPool();
+        customThreadPool();
     }
 
     /**
@@ -61,7 +62,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
             final int index = i;
             executorService.execute(() -> {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -75,14 +76,14 @@ public class ThreadPoolActivity extends AppCompatActivity {
      */
     private void cachedThreadPool() {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             final int index = i;
             executorService.execute(() -> {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 Log.e(TAG, "cachedThreadPool: name " + Thread.currentThread().getName() + " index " + index);
             });
         }
@@ -95,9 +96,12 @@ public class ThreadPoolActivity extends AppCompatActivity {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(5);
         executorService.scheduleAtFixedRate(() -> {
             Log.e(TAG, "scheduledThreadPool: name " + Thread.currentThread().getName());
-        }, 100, 100, TimeUnit.MILLISECONDS);
+        }, 10, 10, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * 自定义线程池
+     */
     private void customThreadPool() {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 5,//线程池长期维持的线程数，即使线程处于Idle状态，也不会回收。
@@ -107,7 +111,11 @@ public class ThreadPoolActivity extends AppCompatActivity {
                 new ArrayBlockingQueue<>(512),//任务的排队队列
                 Executors.defaultThreadFactory(),//新线程的产生方式
                 new ThreadPoolExecutor.DiscardPolicy());//拒绝策略
-//        threadPoolExecutor.execute();
+        for (int i = 0; i < 1000; i++) {
+            final int index = i;
+            threadPoolExecutor.execute(() -> {
+                Log.e(TAG, "customThreadPool: name " + Thread.currentThread().getName() + " index " + index);
+            });
+        }
     }
-
 }

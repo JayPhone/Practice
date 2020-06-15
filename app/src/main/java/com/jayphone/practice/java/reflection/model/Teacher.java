@@ -61,6 +61,11 @@ public class Teacher extends Person implements School, Serializable {
                 '}';
     }
 
+    @Override
+    public void go() {
+
+    }
+
     public class Leader {
 
     }

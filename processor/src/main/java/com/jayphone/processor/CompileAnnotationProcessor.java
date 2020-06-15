@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
+import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
@@ -20,7 +21,7 @@ import javax.tools.JavaFileObject;
 /**
  * Created by JayPhone on 2020/5/15
  */
-//支持的注解类型, 此处要填写全类名
+//支持的注解类型，此处要填写全类名
 @SupportedAnnotationTypes("com.jayphone.processor.CompileAnnotation")
 //支持的JDK版本
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
@@ -29,6 +30,11 @@ public class CompileAnnotationProcessor extends AbstractProcessor {
     public static final String SUFFIX = "AutoGenerate";
     //生成的类名后缀
     public static final String PREFIX = "My_";
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+    }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

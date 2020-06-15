@@ -89,12 +89,19 @@
         </activity>
         <activity android:name=".java.threadPool.ThreadPoolActivity" >
 <!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".libs.ButterKnifeActivity" >
+<!--            <intent-filter>-->
             <!--                <action android:name="android.intent.action.MAIN" />-->
 
             <!--                <category android:name="android.intent.category.LAUNCHER" />-->
             <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".libs.ButterKnifeActivity" >
+        <activity android:name="com.jayphone.android.view.WebViewActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
