@@ -6,5 +6,6 @@ package com.jayphone.practice.java.reflection.model;
 public interface School {
     void go();
 
-    School s = () -> { };
+    School s = () -> {
+    };
 }
