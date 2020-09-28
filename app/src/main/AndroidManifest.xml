@@ -16,6 +16,16 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity" />
         <activity android:name=".net.NetStateChangeActivity" />
+        <activity android:name="com.jayphone.android.view.dispatch.DispatchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.jayphone.android.view.SurfaceViewActivity">
+
+        </activity>
         <activity
             android:name=".lifecycle.LifeCycleActivity"
             android:configChanges="orientation|screenSize" />
