@@ -46,7 +46,10 @@ public class AQSActivity extends AppCompatActivity {
         };
 
         Runnable semaphoreRunnable = () -> {
-            enter();
+//            enter();
+            for (int i = 0; i < 100; i++) {
+                incrementSemaphore();
+            }
         };
 
         for (int i = 0; i < 10; i++) {
@@ -73,6 +76,22 @@ public class AQSActivity extends AppCompatActivity {
             Log.e(TAG, "count: " + count + " threadName: " + Thread.currentThread().getName());
         } finally {
             mMutex.unlock();
+        }
+    }
+
+    /**
+     * 线程不安全
+     */
+    private void incrementSemaphore() {
+        try {
+            mSemaphore.acquire();
+            Thread.sleep(100);
+            count++;
+            Log.e(TAG, "count: " + count + " threadName: " + Thread.currentThread().getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            mSemaphore.release();
         }
     }
 

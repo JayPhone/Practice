@@ -1,4 +1,4 @@
-package com.jayphone.android.view;
+package com.jayphone.practice.android.view;
 
 import android.os.Bundle;
 import android.webkit.WebView;
