@@ -13,6 +13,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 public class OKHttpActivity extends AppCompatActivity {
     private static final String TAG = "OKHttpActivity";
@@ -22,7 +23,7 @@ public class OKHttpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         asyncGetRequest();
-        syncGetRequest();
+//        syncGetRequest();
     }
 
     /**
@@ -31,7 +32,14 @@ public class OKHttpActivity extends AppCompatActivity {
     private void asyncGetRequest() {
         //1.创建OkHttpClient对象
 //        OkHttpClient okHttpClient = new OkHttpClient();
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okHttpClient = new OkHttpClient
+                .Builder()
+                .addInterceptor(logging)
+                .build();
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式
         Request request = new Request.Builder().url("http://www.baidu.com").get().build();
         //3.创建一个call对象,参数就是Request请求对象
