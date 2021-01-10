@@ -17,26 +17,18 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".net.NetStateChangeActivity" />
         <activity android:name="com.jayphone.android.view.dispatch.DispatchActivity">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
         </activity>
-        <activity android:name="com.jayphone.android.view.SurfaceViewActivity" />
+        <activity android:name="com.jayphone.android.view.SurfaceViewActivity">
+
+        </activity>
         <activity
             android:name=".lifecycle.LifeCycleActivity"
             android:configChanges="orientation|screenSize" />
         <activity android:name=".thread.HandlerActivity" />
         <activity android:name=".thread.CallBackActivity" />
         <activity android:name=".java.generic.GenericActivity" />
-        <activity android:name=".libs.RxjavaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".libs.RxjavaActivity"/>
         <activity android:name=".java.pattern.PatternActivity" />
         <activity android:name=".java.collection.CollectionActivity" />
         <activity android:name=".java.reflection.ReflectionActivity" />
@@ -47,9 +39,14 @@
         <activity android:name=".java.threadPool.ThreadLocalActivity" />
         <activity android:name=".java.threadPool.AQSActivity" />
         <activity android:name=".java.threadPool.ThreadStateActivity" />
-        <activity android:name=".libs.eventbus.EventBusActivity" />
-        <activity android:name=".libs.OKHttpActivity">
+        <activity android:name=".libs.eventbus.EventBusActivity"/>
+        <activity android:name=".libs.OKHttpActivity" />
+        <activity android:name="com.jayphone.android.animation.property.PropertyAnimationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

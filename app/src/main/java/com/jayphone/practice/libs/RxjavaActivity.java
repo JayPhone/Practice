@@ -48,36 +48,24 @@ public class RxjavaActivity extends AppCompatActivity {
 
     private void base() {
         Observable
-                .create(new ObservableOnSubscribe<Integer>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                        emitter.onNext(1);
-                        emitter.onNext(2);
-                        emitter.onNext(3);
-                        emitter.onComplete();
-                    }
+                .create((ObservableOnSubscribe<Integer>) emitter -> {
+                    emitter.onNext(1);
+                    emitter.onNext(2);
+                    emitter.onNext(3);
+                    emitter.onComplete();
                 })
                 .subscribeOn(Schedulers.io())
-                .map(new Function<Integer, String>() {
-                    @Override
-                    public String apply(Integer integer) throws Exception {
-                        return integer + "";
-                    }
+                .map(integer -> {
+                    Log.e(TAG, "map: " + Thread.currentThread().getName());
+                    return integer + "";
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter(new Predicate<String>() {
-                    @Override
-                    public boolean test(String s) throws Exception {
-                        return false;
-                    }
+                .filter(s -> {
+                    Log.e(TAG, "filter: " + Thread.currentThread().getName());
+                    return true;
                 })
                 .observeOn(Schedulers.io())
-                .doOnNext(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-
-                    }
-                })
+                .doOnNext(s -> Log.e(TAG, "doOnNext: " + Thread.currentThread().getName()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
                     @Override
@@ -87,6 +75,7 @@ public class RxjavaActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(String s) {
+                        Log.e(TAG, "onNext: " + Thread.currentThread().getName());
                         Log.e(TAG, "onNext: " + s);
                     }
 
