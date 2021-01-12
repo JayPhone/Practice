@@ -9,6 +9,25 @@
         android:layout_height="50dp"
         android:src="@mipmap/ball" />
 
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivBall"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="从0到5" />
+
+    <TextView
+        android:background="#FF0000"
+        android:id="@+id/tvBgAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCount"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="透明度" />
+
     <Button
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
