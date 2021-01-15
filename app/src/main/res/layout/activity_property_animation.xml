@@ -140,11 +140,18 @@
         android:text="XML组合动画"
         android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnStart"
+    <TextView
+        android:id="@+id/tvViewPropertyAnimator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="抛物线" />
+        android:layout_below="@+id/tvXMLCompose"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="ViewPropertyAnimator"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

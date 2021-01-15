@@ -58,8 +58,8 @@ public class PointAnimatorView extends View {
     }
 
     private void startAnimation() {
-        Point startPoint = new Point(RADIUS, RADIUS);
-        Point endPoint = new Point(getWidth() - RADIUS, getHeight() - RADIUS);
+        Point startPoint = new Point(getWidth() / 2, RADIUS);
+        Point endPoint = new Point(getWidth() / 2, getHeight() - RADIUS);
         ValueAnimator pointAnim = ValueAnimator.ofObject(new PointEvaluator(), startPoint, endPoint);
         pointAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -73,6 +73,7 @@ public class PointAnimatorView extends View {
 
         ObjectAnimator colorAnim = ObjectAnimator.ofObject(this, "color", new ColorEvaluator(), "#0000FF", "#FF0000");
         AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setInterpolator(new DecelerateAccelerateInterpolator());
         animatorSet.play(pointAnim).with(colorAnim);
         animatorSet.setDuration(5000);
         animatorSet.start();

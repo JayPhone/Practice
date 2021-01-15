@@ -47,31 +47,13 @@ public class PropertyAnimationActivity extends AppCompatActivity {
 
     TextView mTvXMLCompose;
 
+    TextView mTvViewPropertyAnimator;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_animation);
         mPointAnimatorView = findViewById(R.id.pointAnimatorView);
-        mBtnStart = findViewById(R.id.btnStart);
-        mBtnStart.setOnClickListener(v -> {
-//            //设置自定义的TypeEvaluator，起始属性
-//            ValueAnimator valueAnimator = ValueAnimator.ofObject(new ParabolaTypeEvaluator(), new Point(0, 0));
-//            //设置时间
-//            valueAnimator.setDuration(1500);
-//            //设置线性时间插值器
-//            valueAnimator.setInterpolator(new LinearInterpolator());
-//            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//                @Override
-//                public void onAnimationUpdate(ValueAnimator animation) {
-//                    Point point = (Point) animation.getAnimatedValue();
-//                    mIvBall.setX(point.x);
-//                    mIvBall.setY(point.y);
-//                    Log.e(TAG, point.x + ":" + point.y);
-//                }
-//            });
-//            valueAnimator.start();
-
-        });
 
         mTvCount = findViewById(R.id.tvCount);
         mTvCount.setOnClickListener(new View.OnClickListener() {
@@ -214,11 +196,16 @@ public class PropertyAnimationActivity extends AppCompatActivity {
             animator.setTarget(v);
             animator.start();
         });
+
+        mTvViewPropertyAnimator = findViewById(R.id.tvViewPropertyAnimator);
+        mTvViewPropertyAnimator.animate().alpha(0f).setDuration(2000);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mTranslationAnimator.cancel();
+        if (mTranslationAnimator != null) {
+            mTranslationAnimator.cancel();
+        }
     }
 }
