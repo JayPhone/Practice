@@ -3,30 +3,142 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivBall"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/ball" />
+    <com.jayphone.android.animation.property.PointAnimatorView
+        android:id="@+id/pointAnimatorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/tvCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivBall"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
         android:text="从0到5" />
 
     <TextView
-        android:background="#FF0000"
         android:id="@+id/tvBgAlpha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCount"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="透明度" />
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="透明度"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvRotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBgAlpha"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="旋转"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvTranslation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRotation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="平移"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvScale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTranslation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="缩放"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvCompose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvScale"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="组合动画"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvXMLValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCompose"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="XML从0到100"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvXMLAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvXMLValue"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="XML透明度"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvXMLCompose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvXMLAlpha"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF0000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="XML组合动画"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnStart"
